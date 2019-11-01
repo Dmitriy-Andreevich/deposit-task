@@ -1,0 +1,11 @@
+server:
+  port: 80
+spring:
+  datasource:
+    url: [PRIVATE]
+    username: [PRIVATE]
+    password: [PRIVATE]
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
