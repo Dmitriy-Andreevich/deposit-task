@@ -21,7 +21,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "accounts")
 public class AccountEntity extends BaseEntity {
 	@NotNull
-	@ManyToOne()
-	@JoinColumn(nullable = false)
+	@ManyToOne
+	@JoinColumn(name = "client_id", nullable = false)
 	ClientEntity client;
 }
