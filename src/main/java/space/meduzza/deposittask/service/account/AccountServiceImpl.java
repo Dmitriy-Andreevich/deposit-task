@@ -24,6 +24,7 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public AccountEntity createAccount(CreateAccountInput input) {
 		final ClientEntity currentClient = authenticationFacade.findCurrentClient();
+
 		return accountRepository.save(new AccountEntity(currentClient));
 	}
 

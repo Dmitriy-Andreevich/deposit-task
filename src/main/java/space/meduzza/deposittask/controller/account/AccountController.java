@@ -41,6 +41,7 @@ public class AccountController {
 	ResponseEntity<AccountDao> create(@Valid @ModelAttribute CreateAccountInput input) {
 		final AccountEntity createdAccount = accountService.createAccount(input);
 		final AccountDao resultDao = new AccountDao(createdAccount.getId(), BigDecimal.ZERO);
+
 		return ResponseEntity.ok().body(resultDao);
 	}
 
@@ -48,6 +49,7 @@ public class AccountController {
 	ResponseEntity<AccountDao> getBalance(@Valid @ModelAttribute GetAccountBalanceInput input) {
 		final AccountBalancePayload accountBalance = transactionalService.getAccountBalance(input);
 		final AccountDao resultDao = new AccountDao(accountBalance.getAccountId(), accountBalance.getBalance());
+
 		return ResponseEntity.ok().body(resultDao);
 	}
 
@@ -57,6 +59,7 @@ public class AccountController {
 		final AccountStatementDao resultDao = new AccountStatementDao(accountStatement.getAccountId(),
 		                                                              convertEntityStatementItemsToDaoStatementItems(
 				                                                              accountStatement));
+
 		return ResponseEntity.ok().body(resultDao);
 	}
 
@@ -77,6 +80,7 @@ public class AccountController {
 	ResponseEntity<AccountDao> deposit(@Valid @ModelAttribute DepositMoneyInput input) {
 		final AccountBalancePayload accountBalance = transactionalService.depositMoney(input);
 		final AccountDao resultDao = new AccountDao(accountBalance.getAccountId(), accountBalance.getBalance());
+
 		return ResponseEntity.ok().body(resultDao);
 	}
 
@@ -84,6 +88,7 @@ public class AccountController {
 	ResponseEntity<AccountDao> withdraw(@Valid @ModelAttribute WithdrawMoneyInput input) {
 		final AccountBalancePayload accountBalance = transactionalService.withdrawMoney(input);
 		final AccountDao resultDao = new AccountDao(accountBalance.getAccountId(), accountBalance.getBalance());
+
 		return ResponseEntity.ok().body(resultDao);
 	}
 

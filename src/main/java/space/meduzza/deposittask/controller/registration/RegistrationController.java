@@ -25,6 +25,7 @@ public class RegistrationController {
 	ResponseEntity registration(@Valid @ModelAttribute CreateClientInput input) {
 		clientService.createClient(input);
 		authenticationFacade.setAuthentication(input.getEmail());
+
 		return ResponseEntity.ok().build();
 	}
 }
